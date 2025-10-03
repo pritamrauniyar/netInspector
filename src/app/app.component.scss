@@ -1,0 +1,85 @@
+:host{display:block}
+
+.card{transform:translateY(6px);opacity:0;animation:cardIn 520ms cubic-bezier(.2,.9,.2,1) forwards}
+.card:nth-child(1){animation-delay:80ms}
+.card:nth-child(2){animation-delay:160ms}
+
+@keyframes cardIn{
+	to{transform:none;opacity:1}
+}
+
+.speed-value{transition:all 420ms cubic-bezier(.2,.9,.2,1);}
+.speed-value[aria-live]{transform:translateY(-4px);}
+
+.title{margin-bottom:14px}
+
+.pulse{animation: pulse 680ms ease-in-out}
+@keyframes pulse{
+	0%{transform:scale(1);filter:brightness(1)}
+	40%{transform:scale(1.06);filter:brightness(1.12)}
+	100%{transform:scale(1);filter:brightness(1)}
+}
+
+.row{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:10px;transition:background .18s,transform .18s}
+.row:hover{background:var(--glass-2);transform:translateY(-2px)}
+.icon{width:18px;height:18px;display:inline-block;flex:0 0 18px}
+.badge{font-size:0.82rem;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+.muted .small{color:var(--muted)}
+
+.value-updated{animation: flash 900ms ease-out}
+@keyframes flash{
+  0%{background:rgba(96,165,250,0.14)}
+  60%{background:transparent}
+  100%{background:transparent}
+}
+
+/* Accessible focus styles for interactive controls */
+button, .tooltip-parent [role="button"]{
+	outline: none;
+}
+button:focus, .tooltip-parent button:focus{
+	box-shadow: 0 0 0 3px rgba(96,165,250,0.18);
+	border-radius:8px;
+}
+
+/* Tooltip styles - visible on hover or focus */
+.tooltip-parent{position:relative;display:inline-block}
+.tooltip{position:absolute;left:0;top:calc(100% + 8px);background:rgba(20,20,20,0.96);color:#fff;padding:6px 8px;border-radius:6px;font-size:0.82rem;min-width:180px;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .18s,transform .18s}
+.tooltip-parent:hover .tooltip, .tooltip-parent:focus-within .tooltip{opacity:1;pointer-events:auto;transform:none}
+.tooltip[role="tooltip"]{z-index:30}
+
+/* Make sure svg elements that act as images are keyboard accessible when needed */
+svg[role="img"]{outline:none}
+
+/* Diagnostics card small tweaks */
+.card button.small{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;cursor:pointer}
+.card button.small:hover{background:rgba(255,255,255,0.02)}
+.card pre{margin:0}
+
+/* Performance gauge */
+.perf-gauge{height:12px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+.perf-fill{height:100%;width:0;background:#6b7280;transition:width .5s ease, background .3s ease}
+
+.card ol{padding-left:1rem;margin:8px 0}
+.card ol li{margin:6px 0}
+
+.webrtc-metrics{display:flex;gap:12px;align-items:center}
+.webrtc-metrics .small{min-width:60px}
+
+.full-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.group{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+.group-title{font-weight:600;margin-bottom:8px}
+.group-items{display:flex;flex-direction:column;gap:6px}
+.info-row{display:flex;justify-content:space-between;gap:8px}
+.info-key{color:var(--muted);min-width:110px}
+.info-val{font-family:monospace}
+.info-val.missing{color:#f87171;font-style:italic}
+
+.why-btn{background:transparent;border:1px dashed rgba(255,255,255,0.06);padding:4px 8px;border-radius:6px}
+.why-btn:hover{background:rgba(255,255,255,0.02)}
+.help-text{background:rgba(255,255,255,0.02);padding:8px;margin-top:6px;border-radius:6px}
+.help-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.link{color:var(--muted);text-decoration:underline}
+
+
